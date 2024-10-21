@@ -1,0 +1,49 @@
+---
+layout: page
+title: /search/
+description: search page
+sitemap: false
+---
+
+<!-- search-input -->
+<form action="/search/" method="get">
+    <input type="text" name="q" id="search-input" placeholder="Search" autofocus="">
+    <input type="submit" value="Search" style="display: none;">
+</form>
+<!-- ./search-input -->
+<!-- search-matter -->
+<p>
+    <span id="search-process">Loading</span> results <span id="search-query-container" style="display:none">for "<strong id="search-query"></strong>"</span>
+</p>
+<div id="search-results">
+
+</div>
+<div class="search-entry">
+    <span><!-- silence is golden--></span>
+</div>
+<!-- ./search-matter -->
+<!-- scripts -->
+<script>
+    window.data = {
+        {% for post in site.posts %}
+            {% if post.title %}
+                {% unless post.excluded_in_search %}
+                    {% if added %},{% endif %}
+                    {% assign added = false %}
+                    "{{ post.url | slugify }}": {
+                        "id": "{{ post.url | slugify }}",
+                        "title": "{{ post.title }}",
+                        "description": "{{ post.description | strip_html | truncate: 160 }}",
+						"date": "{{ post.date | date: '%Y-%m-%d' }}",
+                        "category": "{{ post.category }}",
+                        "url": "{{ post.url | xml_escape }}",
+                    }
+                    {% assign added = true %}
+                {% endunless %}
+            {% endif %}
+        {% endfor %}
+    };
+</script>
+<script src="{{- 'assets/js/lunr.min.js' | relative_url }}"></script>
+<script src="{{- 'assets/js/search.js' | relative_url }}"></script>
+<!-- ./scripts -->

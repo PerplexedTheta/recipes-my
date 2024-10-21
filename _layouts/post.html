@@ -1,0 +1,39 @@
+---
+layout: page
+---
+
+<div class="post-entry">
+    <div class="post-headline">
+        <p class="post-date">
+            {% if page.date %}
+            📅&nbsp;{{- page.date | date: "%Y-%m-%d" }}
+            {% endif %}
+        </p>
+    </div>
+</div>
+
+<hr />
+<div class="post-content">
+    {{ content }}
+    <div style="clear:both"></div>
+</div>
+<hr />
+
+<div class="post-footer">
+    <div class="post-backmatter">
+        <a href="{{ '' | relative_url }}/">&laquo; Back</a>
+    </div>
+    <div class="post-backmatter-right">
+        <small class="post-category">
+            {% if page.category %}
+            🗃️&nbsp;{{- page.category }}
+            {% endif %}
+        </small>
+        <small class="post-tags">
+            {% if page.tags.size > 0 %}
+            -
+            🔖&nbsp;{{- page.tags }}
+            {% endif %}
+        </small>
+    </div>
+</div>

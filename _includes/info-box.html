@@ -1,0 +1,22 @@
+<table class="post-table">
+    <thead></thead>
+    <tbody>
+        <tr>
+            <td>
+                <strong>Prep:</strong> {{ include.prep }}<br />
+                <strong>Cook:</strong> {{ include.cook }}
+            </td>
+            <td>
+                <strong>Serves:</strong> {{ include.serves }}
+            </td>
+            <td>
+                <strong>Energy / serving:</strong>
+                {% if include.energy_measure == 'kcal' %}
+                {{ include.energy | kcal_to_kj }} kJ
+                {% else %}
+                {{ include.energy }} kcal
+                {% endif %}
+            </td>
+        </tr>
+    </tbody>
+</table>

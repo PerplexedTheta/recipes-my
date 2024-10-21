@@ -1,0 +1,276 @@
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import url("https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&display=swap");
+
+@import "variables";
+
+// ==== main scss file, jake deery, 2024 ====
+html,
+body {
+    padding: 0;
+    margin: 0;
+
+    // bg to be page-like
+    // color to be dark blue
+    background: $white-smoke;
+    color: $prussianBlue;
+
+    // font
+    font-family: ui-monospace, "SF Mono", "Menlo", "Monaco", "Cascadia Mono",
+        "Segoe UI Mono", "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace",
+        "Source Code Pro", "Fira Mono", "Droid Sans Mono", "Courier New",
+        monospace;
+    font-weight: 400;
+}
+
+
+// ==== general rules ====
+a {
+    // set links up
+    color: lighten($prussianBlue, 25%);
+    font-style: italic;
+    text-decoration: none;
+
+    &:hover,
+    &:focus,
+    &:active {
+        color: darken($prussianBlue, 25%);
+        text-decoration-color: darken($prussianBlue, 25%);
+        text-decoration-style: dotted;
+        text-decoration-line: underline;
+    }
+
+    // we want a nice box around focused links
+    &:focus,
+    &:active {
+        text-decoration: none;
+        background-color: lighten($prussianBlue, 65%);
+        outline: 2px dashed $prussianBlue;
+    }
+}
+
+hr {
+    border-top: 1px dashed $prussianBlue;
+    opacity: 1;
+}
+
+.clearfix {
+    overflow: auto;
+}
+
+
+// ==== app-specific rules ====
+#wrapper {
+    display: block;
+    max-width: calc(800px + 1em);
+    margin: 0 auto;
+    padding: 0 1em;
+
+    .kernow {
+        color: #000;
+        font-style: normal;
+    }
+}
+
+
+#header {
+
+    #brand {
+        h1 {
+            margin: 0;
+            font-variant: small-caps;
+            font-weight: 700;
+            line-height: 1.0;
+
+            a {
+                color: $prussianBlue;
+                font-style: normal;
+                text-decoration: none;
+
+                &:focus,
+                &:hover,
+                &:active {
+                    color: darken($prussianBlue, 25%);
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        h3 {
+            margin: 0;
+            font-size: 1.15em;
+            font-weight: 500;
+        }
+    }
+
+    #nav {
+        .nav-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-link {
+            color: lighten($prussianBlue, 15%);
+
+            &:hover,
+            &:focus,
+            &:active {
+                color: darken($prussianBlue, 5%);
+            }
+        }
+    }
+}
+
+
+#content {
+
+    h1 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+
+        &::before {
+            content: "# ";
+            color: lighten($prussianBlue, 10%);
+        }
+    }
+
+    h2 {
+        font-size: 1.50rem;
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+
+        &::before {
+            content: "# ";
+            color: lighten($prussianBlue, 10%);
+        }
+    }
+
+    h3 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-top: 0.90rem;
+        margin-bottom: 0.50rem;
+
+        &::before {
+            content: "# ";
+            color: lighten($prussianBlue, 10%);
+        }
+    }
+
+    h4 {
+        font-size: 1.125rem;
+        font-weight: 600;
+        margin-top: 0.75rem;
+        margin-bottom: 0.25rem;
+
+        &::before {
+            content: "# ";
+            color: lighten($prussianBlue, 10%);
+        }
+    }
+
+    h5 {
+        font-size: 1.0625rem;
+        font-weight: 500;
+        margin-top: 0.33rem;
+        margin-bottom: 0.125rem;
+
+        &::before {
+            content: "# ";
+            color: lighten($prussianBlue, 10%);
+        }
+    }
+}
+
+
+#footer {}
+
+
+// ==== dark mode ====
+@media(prefers-color-scheme: dark) {
+
+    html,
+    body {
+
+        // bg to be page-like
+        // color to be dark blue
+        background: $prussianBlue;
+        color: $white-smoke;
+    }
+
+    a {
+        // set links up
+        color: darken($white-smoke, 25%);
+
+        &:hover,
+        &:focus,
+        &:active {
+            color: lighten($white-smoke, 25%);
+            text-decoration-color: lighten($white-smoke, 25%);
+        }
+
+        // we want a nice box around focused links
+        &:focus,
+        &:active {
+            background-color: darken($white-smoke, 65%);
+            outline: 2px dashed $white-smoke;
+        }
+    }
+
+    hr {
+        border-top: 1px dashed $white-smoke;
+    }
+
+    #header {
+        #brand {
+            h1 {
+                a {
+                    color: $white-smoke;
+
+                    &:focus,
+                    &:hover,
+                    &:active {
+                        color: lighten($white-smoke, 25%);
+                    }
+                }
+            }
+        }
+
+        #nav {
+            .nav-link {
+                color: darken($white-smoke, 15%);
+
+                &:hover,
+                &:focus,
+                &:active {
+                    color: lighten($white-smoke, 5%);
+                }
+            }
+        }
+    }
+
+
+    #content {
+
+        // blog & post
+        // blog only
+        .blog-entry {
+            border-top: 1px dashed $white-smoke;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            &::before {
+                content: "# ";
+                color: darken($white-smoke, 10%);
+            }
+        }
+
+    }
+
+    #footer {}
+}

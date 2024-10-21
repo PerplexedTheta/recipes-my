@@ -1,0 +1,63 @@
+<table class="post-table">
+    <thead></thead>
+    <tbody>
+        <tr>
+            <td>
+                <strong>Fat</strong><br />
+                {% if include.measure == 'oz' %}
+                {{ include.fat | oz_to_g }} g
+                {% else %}
+                {{ include.fat }} g
+                {% endif %}
+            </td>
+            <td>
+                <strong>Saturates</strong><br />
+                {% if include.measure == 'oz' %}
+                {{ include.saturates | oz_to_g }} g
+                {% else %}
+                {{ include.saturates }} g
+                {% endif %}
+            </td>
+            <td>
+                <strong>Carbs</strong><br />
+                {% if include.measure == 'oz' %}
+                {{ include.carbs | oz_to_g }} g
+                {% else %}
+                {{ include.carbs }} g
+                {% endif %}
+            </td>
+            <td>
+                <strong>Sugars</strong><br />
+                {% if include.measure == 'oz' %}
+                {{ include.sugar | oz_to_g }} g
+                {% else %}
+                {{ include.sugar }} g
+                {% endif %}
+            </td>
+            <td>
+                <strong>Fibre</strong><br />
+                {% if include.measure == 'oz' %}
+                {{ include.fibre | oz_to_g }} g
+                {% else %}
+                {{ include.fibre }} g
+                {% endif %}
+            </td>
+            <td>
+                <strong>Protein</strong><br />
+                {% if include.measure == 'oz' %}
+                {{ include.protein | oz_to_g }} g
+                {% else %}
+                {{ include.protein }} g
+                {% endif %}
+            </td>
+            <td>
+                <strong>Salt</strong><br />
+                {% if include.measure == 'oz' %}
+                {{ include.salt | oz_to_g }} g
+                {% else %}
+                {{ include.salt }} g
+                {% endif %}
+            </td>
+        </tr>
+    </tbody>
+</table>
