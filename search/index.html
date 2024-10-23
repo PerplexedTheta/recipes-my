@@ -6,9 +6,9 @@ sitemap: false
 ---
 
 <!-- search-input -->
-<form action="/search/" method="get">
+<form action="{{- 'search/' | relative_url }}" method="get">
     <input type="text" name="q" id="search-input" placeholder="Search" autofocus="">
-    <input type="submit" value="Search" style="display: none;">
+    <input type="submit" value="Search" style="display:none">
 </form>
 <!-- ./search-input -->
 <!-- search-matter -->
@@ -36,7 +36,7 @@ sitemap: false
                         "description": "{{ post.description | strip_html | truncate: 160 }}",
 						"date": "{{ post.date | date: '%Y-%m-%d' }}",
                         "category": "{{ post.category }}",
-                        "url": "{{ post.url | xml_escape }}",
+                        "url": "{{- post.url | relative_url | xml_escape }}",
                     }
                     {% assign added = true %}
                 {% endunless %}
